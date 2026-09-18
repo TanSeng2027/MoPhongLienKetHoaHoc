@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Lữ Chiến Tấn Sang" />
+  <title>Molecular Lab - Mô phỏng liên kết</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="header-left">
+      <h1>Molecular Simulator Lab</h1>
+      <p class="subtitle">Mô phỏng liên kết hóa học</p>
+    </div>
+
+    <div class="header-center">
+      <button id="btn-undo" class="btn-icon" title="Hoàn tác (Ctrl+Z)">↶ Hoàn tác</button>
+      <button id="btn-redo" class="btn-icon" title="Làm lại (Ctrl+Y)">↷ Làm lại</button>
+      <button id="btn-clear" class="btn-icon danger" title="Xóa tất cả">🗑️ Xóa tất cả</button>
+    </div>
+
+    <div class="header-right">
+      <span class="creator">
+        <span class="creator-icon">🧬</span>
+        <span>Created by</span>
+        <strong>TanSeng</strong>
+      </span>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <aside class="panel palette-panel">
+
+      <!-- PHẦN NGUYÊN TỐ (Mặc định thu gọn) -->
+      <div id="toggle-palette-btn" class="panel-header-toggle" title="Nhấn để thu gọn/mở rộng">
+        <h2>🧪 Nguyên tố</h2>
+        <span id="palette-icon">▶</span>
+      </div>
+      <div id="element-palette" class="element-palette collapsed"></div>
+
+      <!-- PHẦN ĐIỀU KHIỂN (Mặc định thu gọn) -->
+      <div class="palette-controls">
+        <div id="toggle-controls-btn" class="panel-header-toggle" title="Nhấn để thu gọn/mở rộng">
+          <h3>Điều khiển</h3>
+          <span id="controls-icon">▶</span>
+        </div>
+
+        <div id="controls-content" class="collapsed">
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-electron-anim" checked />
+            <span>Electron Animation</span>
+          </label>
+
+          <label class="toggle-row">
+            <input type="checkbox" id="toggle-config" />
+            <span>Show Electron Configuration</span>
+          </label>
+
+          <label class="slider-row">
+            <span>Tốc độ:</span>
+            <input type="range" id="anim-speed" min="0" max="200" value="100" />
+          </label>
+
+          <div class="zoom-controls">
+            <button id="btn-zoom-in" class="btn-small">+</button>
+            <button id="btn-zoom-out" class="btn-small">-</button>
+            <button id="btn-zoom-reset" class="btn-small">Reset Zoom</button>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- KHU VỰC SVG Ở GIỮA -->
+    <section class="workspace-wrapper">
+      <div id="workspace" class="workspace">
+        <svg id="sim-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div id="workspace-hint" class="workspace-hint">
+          <p>Kéo thả nguyên tử vào đây để bắt đầu</p>
+        </div>
+      </div>
+      <div id="toast" class="toast"></div>
+    </section>
+
+  <!-- MODALS -->
+  <div id="tutorial-modal" class="modal-overlay">
+    <div class="modal">
+      <h2>Chào mừng đến với Molecular Lab!</h2>
+      <ol class="tutorial-steps">
+        <li><strong>Bước 1:</strong> Chọn một nguyên tố từ danh sách bên trái.</li>
+        <li><strong>Bước 2:</strong> Kéo thả nguyên tử vào không gian làm việc.</li>
+        <li><strong>Bước 3:</strong> Kéo các nguyên tử lại gần nhau để tạo liên kết cộng hóa trị.</li>
+        <li><strong>Bước 4:</strong> Quan sát các electron dùng chung được hình thành.</li>
+        <li><strong>Bước 5:</strong> Khám phá thêm các phân tử khác!</li>
+      </ol>
+      <button id="btn-start" class="btn-primary">Bắt đầu</button>
+    </div>
+  </div>
+
+  <div id="confirm-modal" class="modal-overlay hidden">
+    <div class="modal">
+      <h2>Xác nhận</h2>
+      <p>Bạn có chắc chắn muốn xóa toàn bộ không gian làm việc không?</p>
+      <div class="modal-actions">
+        <button id="btn-confirm-cancel" class="btn-secondary">Hủy</button>
+        <button id="btn-confirm-clear" class="btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="celebrate" class="celebrate hidden"></div>
+
+  <!-- Import Scripts -->
+  <script src="js/electron.js"></script>
+  <script src="js/atom.js"></script>
+  <script src="js/molecule.js"></script>
+  <script src="js/simulation.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

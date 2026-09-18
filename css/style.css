@@ -1,0 +1,1259 @@
+/* =========================================================
+   MOLECULAR LAB
+   Modern Scientific UI – Complete & Unified Typography
+   ========================================================= */
+
+/* ============ RESET & BASE ============ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* Background */
+  --bg-dark: #eef4f8;
+  --bg-panel: rgba(255, 255, 255, 0.94);
+  --bg-panel-solid: #ffffff;
+  --bg-workspace: #f8fbfd;
+
+  /* Main colors */
+  --cyan: #0284c7;
+  --cyan-light: #0ea5e9;
+  --cyan-dark: #0369a1;
+  --cyan-glow: rgba(14, 165, 233, 0.16);
+
+  --blue: #2563eb;
+  --purple: #7c3aed;
+
+  /* Text */
+  --text: #172033;
+  --text-dim: #64748b;
+  --text-light: #94a3b8;
+
+  /* Border */
+  --border: #d7e1e8;
+  --border-light: #e8eef2;
+
+  /* Status */
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --pink: #ec4899;
+
+  /* Shape */
+  --radius: 12px;
+  --radius-lg: 16px;
+
+  /* Shadow */
+  --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
+  --shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
+  --shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.10);
+
+  /* Typography – unified */
+  --font-main: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-dark);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  height: 70px;
+  padding: 10px 22px;
+
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+
+  position: relative;
+  z-index: 100;
+}
+
+/* ---------- Header Left ---------- */
+
+.header-left {
+  flex: 0 0 auto;
+}
+
+.header-left h1 {
+  font-family: var(--font-main);
+  font-size: 1.35rem;
+  line-height: 1.1;
+  color: var(--cyan-dark);
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+.subtitle {
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 3px;
+  font-weight: 500;
+}
+
+/* ---------- Header Center ---------- */
+
+.header-center {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-family: var(--font-main);
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  color: var(--text);
+
+  padding: 7px 12px;
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-icon:hover {
+  background: #ffffff;
+  border-color: #a9c9da;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.btn-icon:active {
+  transform: translateY(0);
+}
+
+.btn-icon.danger:hover {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: var(--danger);
+}
+
+/* ---------- Header Right ---------- */
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* ---------- Creator ---------- */
+
+.creator {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 4px 10px;
+
+  font-family: var(--font-main);
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--text-dim);
+
+  background: linear-gradient(
+    135deg,
+    rgba(14, 165, 233, 0.07),
+    rgba(124, 58, 237, 0.07)
+  );
+
+  border: 1px solid rgba(14, 165, 233, 0.18);
+  border-radius: 999px;
+  box-shadow: 0 2px 7px rgba(15, 23, 42, 0.04);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.creator:hover {
+  transform: translateY(-1px);
+  border-color: rgba(14, 165, 233, 0.35);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.10);
+}
+
+.creator strong {
+  font-weight: 750;
+  background: linear-gradient(90deg, #0284c7, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.creator-icon {
+  font-size: 0.8rem;
+  color: var(--cyan);
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.app-main {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  height: calc(100vh - 70px);
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel {
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+  font-family: var(--font-main);
+}
+
+.panel h2 {
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  color: var(--cyan-dark);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  font-weight: 750;
+}
+
+.palette-panel {
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 3px 0 15px rgba(15, 23, 42, 0.035);
+}
+
+/* =========================================================
+   ELEMENT PALETTE
+   ========================================================= */
+
+.element-palette {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.element-card {
+  position: relative;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: 11px;
+  padding: 10px 8px;
+  text-align: center;
+  cursor: grab;
+  user-select: none;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-main);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.element-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan), var(--blue), var(--purple));
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.element-card:hover {
+  transform: translateY(-3px);
+  border-color: #a9d7e9;
+  box-shadow: 0 7px 18px rgba(15, 23, 42, 0.09);
+  background: #ffffff;
+}
+
+.element-card:hover::before {
+  opacity: 1;
+}
+
+.element-card:active {
+  cursor: grabbing;
+  transform: scale(0.98);
+}
+
+.element-card .name {
+  font-family: var(--font-main);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin: 3px 0;
+  font-weight: 500;
+}
+
+.element-card .valence {
+  font-family: var(--font-main);
+  font-size: 0.68rem;
+  color: var(--cyan-dark);
+  font-weight: 650;
+}
+
+.element-card .atom-preview {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 5px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-main);
+  font-weight: 750;
+  font-size: 1.1rem;
+  border: 2px solid;
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.5),
+    0 3px 8px rgba(15, 23, 42, 0.08);
+}
+
+/* =========================================================
+   PALETTE CONTROLS
+   ========================================================= */
+
+.palette-controls {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+}
+
+.palette-controls h3 {
+  font-family: var(--font-main);
+  font-size: 0.9rem;          /* đồng bộ với h2 Nguyên tố */
+  color: var(--cyan-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.9px;
+  font-weight: 750;
+}
+
+.toggle-row,
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-main);
+  font-size: 0.78rem;         /* đồng bộ với nút và chữ khác */
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 9px;
+  cursor: pointer;
+}
+
+.toggle-row input[type="checkbox"] {
+  accent-color: var(--cyan);
+  width: 15px;
+  height: 15px;
+}
+
+.slider-row input[type="range"] {
+  flex: 1;
+  accent-color: var(--cyan);
+}
+
+/* ---------- Zoom ---------- */
+
+.zoom-controls {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.btn-small {
+  flex: 1;
+  font-family: var(--font-main);
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-small:hover {
+  background: #ffffff;
+  border-color: #a9c9da;
+  box-shadow: var(--shadow-sm);
+}
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace-wrapper {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.workspace {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-workspace);
+  background-image:
+    linear-gradient(rgba(2, 132, 199, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(2, 132, 199, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+  cursor: grab;
+  position: relative;
+}
+
+.workspace:active {
+  cursor: grabbing;
+}
+
+#sim-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Workspace Hint ---------- */
+
+.workspace-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-dim);
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  pointer-events: none;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 11px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  opacity: 0.9;
+}
+
+.workspace-hint p::before {
+  content: "⚗️";
+  margin-right: 7px;
+}
+
+.workspace-hint.hidden {
+  display: none;
+}
+
+/* =========================================================
+   SVG ELEMENTS
+   ========================================================= */
+
+.atom-group {
+  cursor: pointer;
+}
+
+.atom-nucleus {
+  transition: filter 0.2s ease;
+}
+
+.atom-group:hover .atom-nucleus {
+  filter: brightness(1.12);
+}
+
+.atom-label {
+  font-family: var(--font-main);
+  font-weight: 700;
+  pointer-events: none;
+  user-select: none;
+}
+
+.electron {
+  pointer-events: none;
+}
+
+/* =========================================================
+   INFO PANEL (giữ lại để tương thích nếu dùng)
+   ========================================================= */
+
+.info-content {
+  font-family: var(--font-main);
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
+
+.info-placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+  font-size: 0.74rem;
+  background: #f8fafc;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  font-family: var(--font-main);
+}
+
+.info-card {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-main);
+}
+
+.info-card h3 {
+  color: var(--cyan-dark);
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-light);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 750;
+  font-family: var(--font-main);
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0;
+  font-size: 0.76rem;
+  font-family: var(--font-main);
+}
+
+.info-row .label {
+  color: var(--text-dim);
+}
+
+.info-row .value {
+  color: var(--text);
+  font-weight: 650;
+  text-align: right;
+}
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-family: var(--font-main);
+  font-size: 0.68rem;
+  font-weight: 650;
+  margin-top: 6px;
+}
+
+.status-badge.ok {
+  background: #ecfdf5;
+  color: #059669;
+  border: 1px solid #a7f3d0;
+}
+
+.status-badge.warn {
+  background: #fffbeb;
+  color: #d97706;
+  border: 1px solid #fde68a;
+}
+
+/* =========================================================
+   ELECTRONS
+   ========================================================= */
+
+.electron-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 7px 0;
+}
+
+.electron-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.25);
+}
+
+.electron-dot.bonded {
+  background: var(--success);
+}
+
+.electron-dot.lone {
+  background: var(--warning);
+}
+
+.electron-dot.shared {
+  background: var(--pink);
+}
+
+/* =========================================================
+   ELECTRON CONFIGURATION
+   ========================================================= */
+
+.config-diagram {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 8px;
+  line-height: 1.8;
+  border: 1px solid var(--border);
+}
+
+.config-diagram .orbital {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.config-diagram .arrows {
+  color: var(--cyan-dark);
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.38);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--bg-panel-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  max-width: 520px;
+  width: 90%;
+  box-shadow: var(--shadow-lg);
+  animation: slideUp 0.3s ease;
+  font-family: var(--font-main);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(18px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modal h2 {
+  color: var(--cyan-dark);
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 750;
+  font-family: var(--font-main);
+}
+
+.tutorial-steps {
+  list-style: none;
+  padding: 0;
+}
+
+.tutorial-steps li {
+  padding: 9px 0;
+  border-bottom: 1px solid #eef2f5;
+  font-size: 0.84rem;
+  color: var(--text);
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+.tutorial-steps li:last-child {
+  border-bottom: none;
+}
+
+.tutorial-steps li strong {
+  color: var(--cyan-dark);
+  font-weight: 700;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-danger {
+  font-family: var(--font-main);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 650;
+  font-size: 0.84rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--blue));
+  color: white;
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(37, 99, 235, 0.25);
+}
+
+.btn-secondary {
+  background: #f8fafc;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+  background: #f1f5f9;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: white;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  font-weight: 550;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  max-width: 80%;
+  z-index: 50;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast.error {
+  border-left: 4px solid var(--danger);
+  color: var(--danger);
+}
+
+.toast.success {
+  border-left: 4px solid var(--success);
+  color: var(--success);
+}
+
+/* =========================================================
+   CELEBRATE
+   ========================================================= */
+
+.celebrate {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-main);
+  font-size: 2rem;
+  font-weight: 750;
+  color: var(--cyan-dark);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
+  z-index: 2000;
+  pointer-events: none;
+  text-align: center;
+  animation: celebratePop 2.5s ease-out forwards;
+}
+
+.celebrate .formula {
+  font-size: 3rem;
+  display: block;
+  margin: 10px 0;
+  color: var(--text);
+}
+
+.celebrate .name {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+}
+
+@keyframes celebratePop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  40% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -60%) scale(1);
+  }
+}
+
+/* =========================================================
+   TOGGLE PANELS
+   ========================================================= */
+
+.panel-header-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 12px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  font-family: var(--font-main);
+}
+
+.panel-header-toggle:hover {
+  background: rgba(2, 132, 199, 0.07);
+}
+
+.panel-header-toggle h2,
+.panel-header-toggle h3 {
+  margin-bottom: 0 !important;
+}
+
+#palette-icon,
+#controls-icon,
+#info-icon {
+  font-size: 0.7rem;
+  color: var(--cyan);
+  transition: transform 0.3s ease;
+}
+
+.element-palette.collapsed,
+#controls-content.collapsed,
+#info-content.collapsed {
+  display: none !important;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+.panel::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1024px) {
+  .app-main {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
+}
+
+/* =========================================================
+   MOBILE – Vùng kéo thả lớn + Typography thống nhất
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ---------- HEADER ---------- */
+  .app-header {
+    flex-wrap: wrap;
+    height: auto;
+    padding: 9px 12px;
+    gap: 7px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    padding-top: max(9px, env(safe-area-inset-top));
+  }
+
+  .header-left {
+    flex: 0 0 auto;
+  }
+
+  .header-left h1 {
+    font-size: 1.05rem;
+  }
+
+  .creator {
+    display: inline-flex;
+    font-size: 0.58rem;
+    padding: 3px 8px;
+    gap: 4px;
+  }
+
+  .creator-icon {
+    display: none;
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .header-right {
+    order: 1;
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-end;
+  }
+
+  .header-center {
+    order: 2;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 3px;
+    scrollbar-width: none;
+  }
+
+  .header-center::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn-icon {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    font-size: 0.76rem;
+    min-height: 40px;
+    white-space: nowrap;
+    border-radius: 8px;
+  }
+
+  /* ---------- MAIN ---------- */
+  .app-main {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  /* ---------- WORKSPACE – TĂNG KÍCH CỠ ---------- */
+  .workspace-wrapper {
+    order: -1;
+    height: 85vh;
+    min-height: 520px;
+    max-height: 90vh;
+    border-bottom: 2px solid var(--cyan);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg-workspace);
+  }
+
+  .workspace-hint {
+    font-size: 0.72rem;
+    padding: 8px 14px;
+    max-width: 92%;
+    white-space: nowrap;
+  }
+
+  /* ---------- PALETTE ---------- */
+  .palette-panel {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 10px;
+    order: 1;
+    overflow: visible;
+  }
+
+  .palette-panel h2 {
+    font-size: 0.85rem;
+    margin-bottom: 9px;
+  }
+
+  .element-palette {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .element-card {
+    min-width: 0;
+    max-width: none;
+    padding: 8px 4px;
+    border-radius: 10px;
+  }
+
+  .element-card .atom-preview {
+    width: 40px;
+    height: 40px;
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+  }
+
+  .element-card .name,
+  .element-card .valence {
+    font-size: 0.62rem;
+  }
+
+  /* ---------- CONTROLS – đồng bộ cỡ chữ ---------- */
+  .palette-controls {
+    padding-top: 12px;
+    margin-top: 12px;
+  }
+
+  .palette-controls h3 {
+    font-size: 0.85rem;       /* khớp với h2 */
+    margin-bottom: 8px;
+  }
+
+  .toggle-row,
+  .slider-row {
+    font-size: 0.78rem;       /* thống nhất */
+    margin-bottom: 8px;
+    min-height: 36px;
+  }
+
+  .slider-row input[type="range"] {
+    height: 28px;
+  }
+
+  .zoom-controls {
+    margin-top: 10px;
+    gap: 8px;
+  }
+
+  .btn-small {
+    padding: 8px;
+    font-size: 0.78rem;
+    min-height: 40px;
+  }
+
+  /* ---------- MODAL ---------- */
+  .modal {
+    width: 94%;
+    padding: 20px 16px;
+    max-height: 85vh;
+    overflow-y: auto;
+    border-radius: 16px;
+  }
+
+  .modal h2 {
+    font-size: 1.1rem;
+  }
+
+  .tutorial-steps li {
+    font-size: 0.82rem;
+    padding: 10px 0;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-danger {
+    width: 100%;
+    padding: 12px;
+    font-size: 0.9rem;
+    min-height: 46px;
+  }
+
+  /* ---------- TOAST ---------- */
+  .toast {
+    bottom: max(16px, env(safe-area-inset-bottom));
+    max-width: 92%;
+    font-size: 0.78rem;
+    padding: 10px 16px;
+    text-align: center;
+  }
+
+  /* ---------- CELEBRATE ---------- */
+  .celebrate {
+    font-size: 1.4rem;
+    width: 90%;
+  }
+
+  .celebrate .formula {
+    font-size: 2rem;
+  }
+
+  .celebrate .name {
+    font-size: 1rem;
+  }
+}
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .header-left h1 {
+    font-size: 0.95rem;
+  }
+
+  .creator {
+    font-size: 0.52rem;
+    padding: 2px 6px;
+  }
+
+  .btn-icon {
+    font-size: 0.72rem;
+    padding: 7px 10px;
+    min-height: 38px;
+  }
+
+  .workspace-wrapper {
+    height: 78vh;
+    min-height: 460px;
+    max-height: 85vh;
+  }
+
+  .element-palette {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+  }
+
+  .element-card {
+    padding: 6px 2px;
+  }
+
+  .element-card .atom-preview {
+    width: 34px;
+    height: 34px;
+    font-size: 0.85rem;
+  }
+
+  .element-card .name,
+  .element-card .valence {
+    font-size: 0.55rem;
+  }
+
+  .palette-controls h3 {
+    font-size: 0.8rem;
+  }
+
+  .toggle-row,
+  .slider-row {
+    font-size: 0.74rem;
+  }
+}
