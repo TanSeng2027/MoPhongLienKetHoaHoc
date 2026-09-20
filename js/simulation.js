@@ -146,7 +146,7 @@ class Simulation {
         }
       }
     }
-  }s
+  }
 
   _updateElectrons() {
     const speed = this.animSpeed;

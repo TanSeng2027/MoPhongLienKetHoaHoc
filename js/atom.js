@@ -109,30 +109,48 @@ class Atom {
   }
 
   canBondWith(other, order = 1) {
-    if (other.id === this.id) return { ok: false, reason: 'Không thể liên kết với chính nó.' };
-
+    if (other.id === this.id) return { ok: false, reason: 'Không thể liên kết chính nó.' };
+    
+    // Kiểm tra xem đã kết nối với nguyên tử này chưa và số liên kết đã đạt tối đa chưa
     const existing = this.bonds.find(b => b.partnerId === other.id);
-    if (existing && existing.order >= 3) {
-      return { ok: false, reason: `${this.data.name} đã có liên kết ba với ${other.data.name}.` };
+    const currentBondWithPartner = existing ? existing.order : 0;
+    
+    if (currentBondWithPartner + order > 3) {
+      return { ok: false, reason: `${this.data.name} đã đạt giới hạn với ${other.data.name}.` };
     }
+    
+    // Tổng số liên kết của nguyên tử này không được vượt quá typicalBonds
     if (this.totalBonds + order > this.data.typicalBonds) {
-      return { ok: false, reason: `${this.data.name} đã đạt tối đa ${this.data.typicalBonds} liên kết. Hiện tại: ${this.totalBonds}/${this.data.typicalBonds}.` };
+      return { ok: false, reason: `${this.data.name} đã đạt ${this.data.typicalBonds} liên kết tối đa.` };
     }
+    
     if (other.totalBonds + order > other.data.typicalBonds) {
-      return { ok: false, reason: `${other.data.name} đã đạt tối đa ${other.data.typicalBonds} liên kết. Hiện tại: ${other.totalBonds}/${other.data.typicalBonds}.` };
+      return { ok: false, reason: `${other.data.name} đã đạt ${other.data.typicalBonds} liên kết tối đa.` };
     }
+    
     return { ok: true };
   }
-
   addBond(other, order) {
+  const existing = this.bonds.find(b => b.partnerId === other.id);
+  if (existing) {
+    existing.order = order;
+  } else {
     this.bonds.push({ partnerId: other.id, order });
-    other.bonds.push({ partnerId: this.id, order });
-    this.bondedElectrons += order;
-    other.bondedElectrons += order;
-
-    this._updateElectronStates();
-    other._updateElectronStates();
   }
+
+  const otherExisting = other.bonds.find(b => b.partnerId === this.id);
+  if (otherExisting) {
+    otherExisting.order = order;
+  } else {
+    other.bonds.push({ partnerId: this.id, order });
+  }
+
+  this.bondedElectrons = this.totalBonds;
+  other.bondedElectrons = other.totalBonds;
+  
+  this._updateElectronStates();
+  other._updateElectronStates();
+}
 
   /**
    * Cập nhật trạng thái electron dựa trên số liên kết.

@@ -1096,7 +1096,7 @@ body {
   .element-card {
     min-width: 0;
     max-width: none;
-    padding: 8px 4px;
+    padding: 5px 2px;
     border-radius: 10px;
   }
 
