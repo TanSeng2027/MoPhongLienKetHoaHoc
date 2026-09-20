@@ -12,13 +12,11 @@
 }
 
 :root {
-  /* Background */
   --bg-dark: #eef4f8;
   --bg-panel: rgba(255, 255, 255, 0.94);
   --bg-panel-solid: #ffffff;
   --bg-workspace: #f8fbfd;
 
-  /* Main colors */
   --cyan: #0284c7;
   --cyan-light: #0ea5e9;
   --cyan-dark: #0369a1;
@@ -27,31 +25,25 @@
   --blue: #2563eb;
   --purple: #7c3aed;
 
-  /* Text */
   --text: #172033;
   --text-dim: #64748b;
   --text-light: #94a3b8;
 
-  /* Border */
   --border: #d7e1e8;
   --border-light: #e8eef2;
 
-  /* Status */
   --danger: #ef4444;
   --success: #10b981;
   --warning: #f59e0b;
   --pink: #ec4899;
 
-  /* Shape */
   --radius: 12px;
   --radius-lg: 16px;
 
-  /* Shadow */
   --shadow-sm: 0 2px 6px rgba(15, 23, 42, 0.05);
   --shadow: 0 5px 18px rgba(15, 23, 42, 0.07);
   --shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.10);
 
-  /* Typography – unified */
   --font-main: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", sans-serif;
   --font-mono: "Courier New", Courier, monospace;
 }
@@ -83,21 +75,15 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-
   height: 70px;
   padding: 10px 22px;
-
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow);
-
   position: relative;
   z-index: 100;
 }
-
-/* ---------- Header Left ---------- */
 
 .header-left {
   flex: 0 0 auto;
@@ -120,8 +106,6 @@ body {
   font-weight: 500;
 }
 
-/* ---------- Header Center ---------- */
-
 .header-center {
   display: flex;
   align-items: center;
@@ -134,20 +118,15 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5px;
-
   font-family: var(--font-main);
   background: #f8fafc;
   border: 1px solid var(--border);
   color: var(--text);
-
   padding: 7px 12px;
   border-radius: 8px;
-
   cursor: pointer;
-
   font-size: 0.78rem;
   font-weight: 600;
-
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
@@ -172,8 +151,6 @@ body {
   color: var(--danger);
 }
 
-/* ---------- Header Right ---------- */
-
 .header-right {
   display: flex;
   align-items: center;
@@ -183,26 +160,20 @@ body {
   min-width: 0;
 }
 
-/* ---------- Creator ---------- */
-
 .creator {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-
   padding: 4px 10px;
-
   font-family: var(--font-main);
   font-size: 0.72rem;
   font-weight: 500;
   color: var(--text-dim);
-
   background: linear-gradient(
     135deg,
     rgba(14, 165, 233, 0.07),
     rgba(124, 58, 237, 0.07)
   );
-
   border: 1px solid rgba(14, 165, 233, 0.18);
   border-radius: 999px;
   box-shadow: 0 2px 7px rgba(15, 23, 42, 0.04);
@@ -294,7 +265,6 @@ body {
   user-select: none;
   box-shadow: var(--shadow-sm);
   font-family: var(--font-main);
-
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -405,8 +375,6 @@ body {
   accent-color: var(--cyan);
 }
 
-/* ---------- Zoom ---------- */
-
 .zoom-controls {
   display: flex;
   gap: 6px;
@@ -464,8 +432,6 @@ body {
   height: 100%;
   display: block;
 }
-
-/* ---------- Workspace Hint ---------- */
 
 .workspace-hint {
   position: absolute;
@@ -963,7 +929,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE – Tối ưu hiển thị, thu gọn bảng kéo thả nguyên tố
+   MOBILE – Tối ưu hiển thị
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -1050,17 +1016,14 @@ body {
     height: auto;
   }
 
-  /* ---------- WORKSPACE ---------- */
+  /* ✅ WORKSPACE: Giảm xuống 50vh, bỏ sticky */
   .workspace-wrapper {
     order: -1;
-    height: 75vh;
-    min-height: 450px;
-    max-height: 82vh;
+    height: 50vh;
+    min-height: 320px;
+    max-height: 55vh;
     border-bottom: 2px solid var(--cyan);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-    position: sticky;
-    top: 0;
-    z-index: 50;
     background: var(--bg-workspace);
   }
 
@@ -1071,14 +1034,14 @@ body {
     white-space: nowrap;
   }
 
-  /* ---------- PALETTE (Thu gọn để tránh đẩy quá sâu) ---------- */
+  /* ---------- PALETTE ---------- */
   .palette-panel {
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 8px 10px;
+    padding: 10px;
     order: 1;
-    max-height: 32vh;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: visible;
   }
 
   .palette-panel h2 {
@@ -1086,11 +1049,10 @@ body {
     margin-bottom: 6px;
   }
 
-  /* Chuyển thành 5 cột ngang giúp bảng lùn và gọn hơn */
   .element-palette {
     display: grid !important;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+    gap: 5px;
     overflow: visible;
     padding: 0;
   }
@@ -1098,26 +1060,26 @@ body {
   .element-card {
     min-width: 0;
     max-width: none;
-    padding: 4px 2px;
+    padding: 5px 2px;
     border-radius: 8px;
   }
 
   .element-card .atom-preview {
-    width: 30px;
-    height: 30px;
-    font-size: 0.85rem;
-    margin-bottom: 2px;
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
   }
 
   .element-card .name,
   .element-card .valence {
-    font-size: 0.52rem;
+    font-size: 0.55rem;
   }
 
   /* ---------- CONTROLS ---------- */
   .palette-controls {
-    padding-top: 8px;
-    margin-top: 8px;
+    padding-top: 10px;
+    margin-top: 10px;
   }
 
   .palette-controls h3 {
@@ -1224,10 +1186,11 @@ body {
     min-height: 38px;
   }
 
+  /* ✅ WORKSPACE: Nhỏ hơn cho màn hình nhỏ */
   .workspace-wrapper {
-    height: 70vh;
-    min-height: 400px;
-    max-height: 78vh;
+    height: 45vh;
+    min-height: 300px;
+    max-height: 50vh;
   }
 
   .element-palette {
@@ -1240,14 +1203,14 @@ body {
   }
 
   .element-card .atom-preview {
-    width: 26px;
-    height: 26px;
-    font-size: 0.75rem;
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
   }
 
   .element-card .name,
   .element-card .valence {
-    font-size: 0.48rem;
+    font-size: 0.5rem;
   }
 
   .palette-controls h3 {
