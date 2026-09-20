@@ -373,7 +373,7 @@ body {
 
 .palette-controls h3 {
   font-family: var(--font-main);
-  font-size: 0.9rem;          /* đồng bộ với h2 Nguyên tố */
+  font-size: 0.9rem;
   color: var(--cyan-dark);
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -387,7 +387,7 @@ body {
   align-items: center;
   gap: 8px;
   font-family: var(--font-main);
-  font-size: 0.78rem;         /* đồng bộ với nút và chữ khác */
+  font-size: 0.78rem;
   color: var(--text);
   font-weight: 500;
   margin-bottom: 9px;
@@ -524,7 +524,7 @@ body {
 }
 
 /* =========================================================
-   INFO PANEL (giữ lại để tương thích nếu dùng)
+   INFO PANEL
    ========================================================= */
 
 .info-content {
@@ -963,7 +963,7 @@ body {
 }
 
 /* =========================================================
-   MOBILE – Vùng kéo thả lớn + Typography thống nhất
+   MOBILE – Tối ưu hiển thị, thu gọn bảng kéo thả nguyên tố
    ========================================================= */
 
 @media (max-width: 768px) {
@@ -1050,12 +1050,12 @@ body {
     height: auto;
   }
 
-  /* ---------- WORKSPACE – TĂNG KÍCH CỠ ---------- */
+  /* ---------- WORKSPACE ---------- */
   .workspace-wrapper {
     order: -1;
-    height: 85vh;
-    min-height: 520px;
-    max-height: 90vh;
+    height: 75vh;
+    min-height: 450px;
+    max-height: 82vh;
     border-bottom: 2px solid var(--cyan);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     position: sticky;
@@ -1071,24 +1071,26 @@ body {
     white-space: nowrap;
   }
 
-  /* ---------- PALETTE ---------- */
+  /* ---------- PALETTE (Thu gọn để tránh đẩy quá sâu) ---------- */
   .palette-panel {
     border-right: none;
     border-bottom: 1px solid var(--border);
-    padding: 12px 10px;
+    padding: 8px 10px;
     order: 1;
-    overflow: visible;
+    max-height: 32vh;
+    overflow-y: auto;
   }
 
   .palette-panel h2 {
-    font-size: 0.85rem;
-    margin-bottom: 9px;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
   }
 
+  /* Chuyển thành 5 cột ngang giúp bảng lùn và gọn hơn */
   .element-palette {
     display: grid !important;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
     overflow: visible;
     padding: 0;
   }
@@ -1096,53 +1098,53 @@ body {
   .element-card {
     min-width: 0;
     max-width: none;
-    padding: 5px 2px;
-    border-radius: 10px;
+    padding: 4px 2px;
+    border-radius: 8px;
   }
 
   .element-card .atom-preview {
-    width: 40px;
-    height: 40px;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.85rem;
+    margin-bottom: 2px;
   }
 
   .element-card .name,
   .element-card .valence {
-    font-size: 0.62rem;
+    font-size: 0.52rem;
   }
 
-  /* ---------- CONTROLS – đồng bộ cỡ chữ ---------- */
+  /* ---------- CONTROLS ---------- */
   .palette-controls {
-    padding-top: 12px;
-    margin-top: 12px;
+    padding-top: 8px;
+    margin-top: 8px;
   }
 
   .palette-controls h3 {
-    font-size: 0.85rem;       /* khớp với h2 */
-    margin-bottom: 8px;
+    font-size: 0.8rem;
+    margin-bottom: 6px;
   }
 
   .toggle-row,
   .slider-row {
-    font-size: 0.78rem;       /* thống nhất */
-    margin-bottom: 8px;
-    min-height: 36px;
+    font-size: 0.76rem;
+    margin-bottom: 6px;
+    min-height: 32px;
   }
 
   .slider-row input[type="range"] {
-    height: 28px;
+    height: 24px;
   }
 
   .zoom-controls {
-    margin-top: 10px;
-    gap: 8px;
+    margin-top: 8px;
+    gap: 6px;
   }
 
   .btn-small {
-    padding: 8px;
-    font-size: 0.78rem;
-    min-height: 40px;
+    padding: 6px;
+    font-size: 0.76rem;
+    min-height: 36px;
   }
 
   /* ---------- MODAL ---------- */
@@ -1223,37 +1225,37 @@ body {
   }
 
   .workspace-wrapper {
-    height: 78vh;
-    min-height: 460px;
-    max-height: 85vh;
+    height: 70vh;
+    min-height: 400px;
+    max-height: 78vh;
   }
 
   .element-palette {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 6px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
   }
 
   .element-card {
-    padding: 6px 2px;
+    padding: 4px 2px;
   }
 
   .element-card .atom-preview {
-    width: 34px;
-    height: 34px;
-    font-size: 0.85rem;
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
   }
 
   .element-card .name,
   .element-card .valence {
-    font-size: 0.55rem;
+    font-size: 0.48rem;
   }
 
   .palette-controls h3 {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .toggle-row,
   .slider-row {
-    font-size: 0.74rem;
+    font-size: 0.72rem;
   }
 }
