@@ -934,11 +934,18 @@ body {
 
 @media (max-width: 768px) {
 
+  html {
+    height: auto;
+  }
+
   body {
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
     height: auto;
     min-height: 100vh;
+    min-height: 100dvh;
     -webkit-overflow-scrolling: touch;
   }
 
@@ -1014,17 +1021,28 @@ body {
     display: flex;
     flex-direction: column;
     height: auto;
+    /* Tự động chiếm hết phần còn lại dưới header (không cần số cố định) */
+    flex: 1 0 auto;
   }
 
-  /* ✅ WORKSPACE: Giảm xuống 50vh, bỏ sticky */
+  /* Workspace giãn ra lấp đầy khoảng trống phía trên panel */
   .workspace-wrapper {
     order: -1;
+    flex: 1 0 auto;
     height: 50vh;
     min-height: 320px;
-    max-height: 55vh;
+    max-height: none;
     border-bottom: 2px solid var(--cyan);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     background: var(--bg-workspace);
+  }
+
+  /* Cho workspace luôn phủ kín wrapper dù wrapper bị giãn */
+  .workspace {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
   }
 
   .workspace-hint {
@@ -1034,14 +1052,23 @@ body {
     white-space: nowrap;
   }
 
-  /* ---------- PALETTE ---------- */
+  /* ---------- PALETTE (sát đáy màn hình) ---------- */
   .palette-panel {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-    padding: 10px;
     order: 1;
+    width: 100%;
+    flex-shrink: 0;
     max-height: none;
     overflow-y: visible;
+    padding: 10px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    border-right: none;
+    border-bottom: none;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -3px 12px rgba(15, 23, 42, 0.05);
+
+    /* Đẩy panel xuống sát đáy */
+    margin-top: auto;
+    align-self: stretch;
   }
 
   .palette-panel h2 {
@@ -1055,6 +1082,10 @@ body {
     gap: 5px;
     overflow: visible;
     padding: 0;
+  }
+
+  .element-palette.collapsed {
+    display: none !important;
   }
 
   .element-card {
@@ -1186,11 +1217,11 @@ body {
     min-height: 38px;
   }
 
-  /* ✅ WORKSPACE: Nhỏ hơn cho màn hình nhỏ */
+  /* Workspace nhỏ hơn cho màn hình nhỏ */
   .workspace-wrapper {
     height: 45vh;
     min-height: 300px;
-    max-height: 50vh;
+    max-height: none;
   }
 
   .element-palette {

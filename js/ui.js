@@ -122,6 +122,15 @@ class UI {
 
     document.getElementById('btn-zoom-reset').addEventListener('click', () => this.sim.resetZoom());
 
+    // ✅ Toggle electron animation
+    const electronAnimEl = document.getElementById('toggle-electron-anim');
+    if (electronAnimEl) {
+      electronAnimEl.addEventListener('change', (e) => {
+        this.sim.setAnimating(e.target.checked);
+      });
+    }
+
+    // ✅ Anim speed
     const animSpeedEl = document.getElementById('anim-speed');
     if (animSpeedEl) {
       animSpeedEl.addEventListener('input', (e) => {
@@ -149,7 +158,6 @@ class UI {
   _renderMoleculeInfo(mol) {
     this.selectedAtom = null;
 
-    // Kích hoạt hiệu ứng chúc mừng khi tạo phân tử thành công
     if (mol && mol.stable && !mol.unknown && mol.formula && this.sim.atoms.length > 1) {
       const stateKey = mol.formula + '_' + this.sim.atoms.length;
       if (this.lastCelebratedKey !== stateKey) {
