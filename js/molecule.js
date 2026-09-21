@@ -5,9 +5,9 @@
 let MOLECULE_DB = [];
 
 // Tải dữ liệu phân tử từ file JSON
-fetch('data/molecule.json')
+fetch('data/molecule.json?v=' + new Date().getTime())
   .then(response => {
-    if (!response.ok) throw new Error("Không thể tải data/molecules.json");
+    if (!response.ok) throw new Error("Không thể tải file JSON");
     return response.json();
   })
   .then(data => {
