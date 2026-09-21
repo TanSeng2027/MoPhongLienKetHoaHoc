@@ -45,6 +45,16 @@ const ELEMENTS = {
       { orbital: '2p', arrows: ['↑↓', '↑', '↑'] }
     ]
   },
+  Cl: {
+    symbol: 'Cl', name: 'Chlorine', vietnameseName: 'Clo',
+    atomicNumber: 17, valenceElectrons: 7, typicalBonds: 1,
+    color: '#15803d', glow: 'rgba(21, 128, 61, 0.6)', radius: 25,
+    configuration: '1s² 2s² 2p⁶ 3s² 3p⁵',
+    orbitalDiagram: [
+      { orbital: '3s', arrows: ['↑', '↓'] },
+      { orbital: '3p', arrows: ['↑↓', '↑↓', '↑'] }
+    ]
+  },
   F: {
     symbol: 'F', name: 'Fluorine', vietnameseName: 'Flo',
     atomicNumber: 9, valenceElectrons: 7, typicalBonds: 1,

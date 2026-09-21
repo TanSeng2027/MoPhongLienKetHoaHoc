@@ -893,7 +893,7 @@ body {
 
 .element-palette.collapsed,
 #controls-content.collapsed,
-#info-content.collapsed {
+#info-content-panel.collapsed {
   display: none !important;
 }
 
@@ -1252,4 +1252,31 @@ body {
   .slider-row {
     font-size: 0.72rem;
   }
+}
+
+.info-content-box {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 6px;
+  font-family: var(--font-main);
+}
+
+.info-content-box .info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 0.76rem;
+}
+
+.highlight-structural {
+  font-family: var(--font-mono);
+  font-weight: 750;
+  color: var(--cyan-dark);
+  background: rgba(14, 165, 233, 0.1);
+  padding: 2px 6px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
 }

@@ -89,6 +89,16 @@ class UI {
       });
     }
 
+    const toggleInfoBtn = document.getElementById('toggle-info-btn');
+    if (toggleInfoBtn) {
+      toggleInfoBtn.addEventListener('click', () => {
+        const infoPanel = document.getElementById('info-content-panel');
+        const icon = document.getElementById('info-icon');
+        infoPanel.classList.toggle('collapsed');
+        icon.textContent = infoPanel.classList.contains('collapsed') ? '▶' : '▼';
+      });
+    }
+
     document.getElementById('btn-undo').addEventListener('click', () => {
       if (this.sim.undo()) this.showToast('↶ Đã hoàn tác', 'success');
     });
@@ -158,13 +168,28 @@ class UI {
   _renderMoleculeInfo(mol) {
     this.selectedAtom = null;
 
-    if (mol && mol.stable && !mol.unknown && mol.formula && this.sim.atoms.length > 1) {
-      const stateKey = mol.formula + '_' + this.sim.atoms.length;
-      if (this.lastCelebratedKey !== stateKey) {
-        this._celebrate(mol);
-        this.lastCelebratedKey = stateKey;
+    const elFormula = document.getElementById('info-formula');
+    const elName = document.getElementById('info-name');
+    const elStructural = document.getElementById('info-structural');
+
+    if (mol && this.sim.atoms.length > 0) {
+      if (elFormula) elFormula.textContent = mol.formula || '—';
+      if (elName) elName.textContent = mol.vietnameseName || mol.name || 'Chưa xác định';
+      
+      // Lấy trực tiếp giá trị tự động tính toán từ hệ thống
+      if (elStructural) elStructural.textContent = mol.structural || (mol.singleAtom ? mol.formula : '—');
+
+      if (mol && mol.stable && !mol.unknown && mol.formula && this.sim.atoms.length > 1) {
+        const stateKey = mol.formula + '_' + this.sim.atoms.length;
+        if (this.lastCelebratedKey !== stateKey) {
+          this._celebrate(mol);
+          this.lastCelebratedKey = stateKey;
+        }
       }
     } else {
+      if (elFormula) elFormula.textContent = '—';
+      if (elName) elName.textContent = '—';
+      if (elStructural) elStructural.textContent = '—';
       this.lastCelebratedKey = null;
     }
   }
@@ -203,4 +228,4 @@ class UI {
   }
 }
 
-window.UI = UI;
+window.UI = UI;f

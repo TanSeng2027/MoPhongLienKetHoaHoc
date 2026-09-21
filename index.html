@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Lữ Chiến Tấn Sang" />
   <title>Molecular Lab - Mô phỏng liên kết</title>
-  <link rel="stylesheet" href="css/style.css?v=2" />
+  <link rel="stylesheet" href="css/style.css?v=2.1" />
 </head>
 <body>
   <header class="app-header">
@@ -34,11 +34,32 @@
 
       <!-- PHẦN NGUYÊN TỐ (Mặc định thu gọn) -->
       <div id="toggle-palette-btn" class="panel-header-toggle" title="Nhấn để thu gọn/mở rộng">
-        <h2>🧪 Nguyên tố</h2>
+        <h2>Nguyên tố</h2>
         <span id="palette-icon">▶</span>
       </div>
+      <!-- Thong tin và cấu tạo của chất-->
       <div id="element-palette" class="element-palette collapsed"></div>
+      <div class="palette-controls">
+        <div id="toggle-info-btn" class="panel-header-toggle" title="Nhấn để thu gọn/mở rộng">
+          <h3>Thông tin</h3>
+          <span id="info-icon">▼</span>
+        </div>
 
+        <div id="info-content-panel" class="info-content-box">
+          <div class="info-row">
+            <span class="label">Phân tử:</span>
+            <span id="info-formula" class="value">—</span>
+          </div>
+          <div class="info-row">
+            <span class="label">Tên gọi:</span>
+            <span id="info-name" class="value">—</span>
+          </div>
+          <div class="info-row structural-row">
+            <span class="label">CT Cấu tạo:</span>
+            <span id="info-structural" class="value highlight-structural">—</span>
+          </div>
+        </div>
+      </div>
       <!-- PHẦN ĐIỀU KHIỂN (Mặc định thu gọn) -->
       <div class="palette-controls">
         <div id="toggle-controls-btn" class="panel-header-toggle" title="Nhấn để thu gọn/mở rộng">
@@ -64,6 +85,7 @@
           </div>
         </div>
       </div>
+      
     </aside>
 
     <!-- KHU VỰC SVG Ở GIỮA -->

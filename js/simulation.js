@@ -219,26 +219,23 @@ class Simulation {
       g.setAttribute('class', 'atom-group');
       g.setAttribute('data-atom-id', atom.id);
 
-      // Hạt nhân màu đỏ đô
-      const nucleus = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      nucleus.setAttribute('cx', atom.x);
-      nucleus.setAttribute('cy', atom.y);
-      nucleus.setAttribute('r', 8);
-      nucleus.setAttribute('fill', '#8b0000');
-      g.appendChild(nucleus);
-
-      // Ký hiệu nguyên tố (H, O, C,...) nằm bên dưới vòng tròn
       const symbol = document.createElementNS('http://www.w3.org/2000/svg', 'text');
       symbol.setAttribute('x', atom.x);
-      symbol.setAttribute('y', atom.y + 70); 
+      symbol.setAttribute('y', atom.y); 
       symbol.setAttribute('text-anchor', 'middle');
-      symbol.setAttribute('fill', '#000');
-      symbol.setAttribute('font-size', '26');
-      symbol.setAttribute('font-family', 'serif');
+      symbol.setAttribute('dominant-baseline', 'central');
+      symbol.setAttribute('fill', '#000000');
+      symbol.setAttribute('font-size', '28');
+      symbol.setAttribute('font-weight', 'bold');
+      symbol.setAttribute('font-family', 'sans-serif');
       symbol.textContent = atom.element;
+      
+      symbol.setAttribute('stroke', '#ffffff');
+      symbol.setAttribute('stroke-width', '4');
+      symbol.setAttribute('paint-order', 'stroke');
+      
       g.appendChild(symbol);
 
-      // Render các hạt electron màu đỏ tươi
       for (const e of atom.electrons) {
         const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         dot.setAttribute('cx', e.x);
@@ -247,7 +244,6 @@ class Simulation {
         let color = '#0284c7'; 
         if (e.state === ElectronState.SHARED) {
            color = '#ef4444';
-
         }
         dot.setAttribute('fill', color);
         g.appendChild(dot);
