@@ -31,7 +31,7 @@ Kéo thả nguyên tử, ghép chúng lại và xem các electron dùng chung h�
 - **Tạo liên kết cộng hóa trị** bằng cách kéo các nguyên tử lại gần nhau, mô phỏng bằng SVG.
 - **Hoạt ảnh electron** dùng chung, có thể bật/tắt và chỉnh tốc độ (0–200).
 - **Bảng thông tin** hiển thị phân tử, tên gọi và công thức cấu tạo của chất vừa ghép.
-- **Hoàn tác / Làm lại** (`Ctrl+Z` / `Ctrl+Y`) và **Xóa tất cả** có hộp thoại xác nhận.
+- **Hoàn tác / Làm lại** và **Xóa tất cả** có hộp thoại xác nhận.
 - **Phóng to / thu nhỏ / đặt lại** khung nhìn.
 - **Hướng dẫn nhanh** dạng cửa sổ chào mừng cho người dùng mới, kèm thông báo (toast) và hiệu ứng chúc mừng.
 - **Cơ sở dữ liệu hợp chất** khoảng 250 chất (vô cơ và hữu cơ), mỗi chất có công thức, tên, số liên kết, bậc liên kết và danh sách nguyên tử/liên kết cụ thể.
@@ -86,18 +86,10 @@ cd MoPhongLienKetHoaHoc
 ```
 
 **2. Chạy bằng web server cục bộ** (chọn một cách)
-
 ```bash
-# Cách 1: Python (có sẵn trên hầu hết máy)
-python -m http.server 8000
-
-# Cách 2: Node.js
-npx serve .
+# Các bạn download extentions là Live Server
+Open with Live Server 
 ```
-
-Hoặc dùng tiện ích **Live Server** trong Visual Studio Code (chuột phải `index.html` → *Open with Live Server*).
-
-**3. Mở trình duyệt** và truy cập `http://localhost:8000`.
 
 ### Triển khai lên GitHub Pages
 
@@ -141,8 +133,8 @@ Hoặc dùng tiện ích **Live Server** trong Visual Studio Code (chuột phả
 > 📸 **Ảnh minh họa:** thêm ảnh chụp màn hình vào thư mục `docs/` (hoặc `screenshots/`) rồi chèn vào đây:
 >
 > ```markdown
-> ![Giao diện chính](docs/screenshot-main.png)
-> ![Phân tử nước](docs/screenshot-h2o.png)
+> ![Giao diện chính](docs/GiaoDien.png)
+> ![Phân tử nước](docs/WaterImg.png)
 > ```
 
 ---
@@ -154,7 +146,8 @@ MoPhongLienKetHoaHoc/
 ├── index.html          # Trang chính: giao diện, bảng nguyên tố, cửa sổ hướng dẫn
 ├── css/
 │   └── style.css       # Giao diện của ứng dụng
-├── data/               # Dữ liệu hợp chất (JSON)
+├── data/  
+|   └── molecule.json   # Dữ liệu hợp chất (JSON)
 └── js/
     ├── electron.js     # Lớp/logic electron và hoạt ảnh electron
     ├── atom.js         # Lớp nguyên tử
@@ -193,29 +186,6 @@ Mỗi hợp chất trong `data/` là một đối tượng JSON:
 | `structural` | Công thức cấu tạo dạng chữ (để hiển thị nhanh) |
 | `atomList` | Danh sách nguyên tử theo chỉ số (gồm cả H) |
 | `bondList` | Danh sách liên kết `[chỉ số A, chỉ số B, bậc liên kết]`, dùng để vẽ đúng cấu trúc |
-
-> 💡 Nên vẽ hình từ `bondList` thay vì phân tích chuỗi `structural`, vì `structural` có chất viết gọn (ví dụ `CH₄`) hoặc chỉ mô tả bằng chữ.
-
----
-
-## 🤝 Đóng góp cho dự án
-
-Mọi đóng góp đều được chào đón, từ báo lỗi, đề xuất tính năng đến thêm hợp chất mới.
-
-1. **Fork** repository này.
-2. Tạo nhánh mới: `git checkout -b feature/ten-tinh-nang`
-3. Thực hiện thay đổi và commit: `git commit -m "Thêm: mô tả ngắn gọn"`
-4. Đẩy nhánh lên: `git push origin feature/ten-tinh-nang`
-5. Mở **Pull Request** và mô tả rõ thay đổi của bạn.
-
-### Quy ước
-
-- Giữ code thuần JavaScript, không thêm thư viện nặng nếu không thật sự cần.
-- Mỗi module chỉ làm một việc (xem [Cấu trúc thư mục](#-cấu-trúc-thư-mục)).
-- Khi thêm hợp chất, đảm bảo `atoms`, `bonds`, `bondOrders` và `bondList` **khớp nhau** (xem mục [Kiểm thử](#-kiểm-thử)).
-- Báo lỗi hoặc đề xuất ở tab [Issues](https://github.com/TanSeng2027/MoPhongLienKetHoaHoc/issues), kèm các bước tái hiện và ảnh chụp màn hình nếu có.
-
-Khi cộng đồng đông hơn, dự án nên bổ sung thêm [Contributor Covenant](https://www.contributor-covenant.org/) và file `CONTRIBUTING.md`.
 
 ---
 
@@ -268,26 +238,12 @@ process.exit(errors ? 1 : 0);
 
 **Lữ Chiến Tấn Sang** (GitHub: [@TanSeng2027](https://github.com/TanSeng2027)), tác giả và người phát triển chính.
 
-Nếu bạn tham khảo tài liệu, bài hướng dẫn hay nguồn dữ liệu hóa học nào khi làm dự án, hãy thêm liên kết vào đây, ví dụ:
-
-- Danh pháp hợp chất: [IUPAC](https://iupac.org/)
 - Kiến thức về liên kết hóa học: sách giáo khoa Hóa học phổ thông
 
 Cảm ơn bạn đã ghé thăm dự án. Nếu thấy hữu ích, đừng quên tặng một ⭐ nhé!
 
 ---
 
-## 📄 Giấy phép
-
-Repository hiện **chưa có file giấy phép**, nghĩa là theo mặc định mã nguồn được bảo hộ bản quyền và người khác chưa có quyền sử dụng lại. Bạn nên chọn một giấy phép phù hợp (ví dụ **MIT** nếu muốn cho phép tự do sử dụng, hoặc **GPL-3.0** nếu muốn bản sửa đổi cũng phải mở mã) tại [choosealicense.com](https://choosealicense.com/), rồi thêm file `LICENSE` vào thư mục gốc.
-
-Sau khi chọn, thay đoạn này bằng:
-
-```text
-Phân phối theo giấy phép MIT. Xem file LICENSE để biết thêm chi tiết.
-```
-
----
 
 <div align="center">
 
