@@ -7,6 +7,7 @@ class UI {
   constructor(simulation) {
     this.sim = simulation;
     this.selectedAtom = null;
+    this.lastCelebratedKey = null;
 
     this._initPalette();
     this._initControls();
@@ -132,7 +133,6 @@ class UI {
 
     document.getElementById('btn-zoom-reset').addEventListener('click', () => this.sim.resetZoom());
 
-    // ✅ Toggle electron animation
     const electronAnimEl = document.getElementById('toggle-electron-anim');
     if (electronAnimEl) {
       electronAnimEl.addEventListener('change', (e) => {
@@ -140,7 +140,6 @@ class UI {
       });
     }
 
-    // ✅ Anim speed
     const animSpeedEl = document.getElementById('anim-speed');
     if (animSpeedEl) {
       animSpeedEl.addEventListener('input', (e) => {
@@ -173,11 +172,17 @@ class UI {
     const elStructural = document.getElementById('info-structural');
 
     if (mol && this.sim.atoms.length > 0) {
-      if (elFormula) elFormula.textContent = mol.formula || '—';
-      if (elName) elName.textContent = mol.vietnameseName || mol.name || 'Chưa xác định';
-      
-      // Lấy trực tiếp giá trị tự động tính toán từ hệ thống
-      if (elStructural) elStructural.textContent = mol.structural || (mol.singleAtom ? mol.formula : '—');
+      const formula = mol.formula || '—';
+
+      if (elFormula) elFormula.textContent = formula;
+
+      // Ô "Tên gọi" hiển thị CÔNG THỨC
+      if (elName) elName.textContent = mol.name || '—';
+
+      // Ô "CT Cấu tạo"
+      if (elStructural) {
+        elStructural.textContent = mol.structural || (mol.singleAtom ? formula : '—');
+      }
 
       if (mol && mol.stable && !mol.unknown && mol.formula && this.sim.atoms.length > 1) {
         const stateKey = mol.formula + '_' + this.sim.atoms.length;
@@ -200,7 +205,6 @@ class UI {
     el.innerHTML = `
       ✨ Molecule Created! ✨
       <span class="formula">${mol.formula}</span>
-      <span class="name">${mol.name} / ${mol.vietnameseName}</span>
     `;
     el.classList.remove('hidden');
     el.style.animation = 'none';
@@ -228,4 +232,4 @@ class UI {
   }
 }
 
-window.UI = UI;f
+window.UI = UI;
